@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+
+
+    <Properties>
+        <Property name="outPutDir" value="/opt/logs/mobile/algs4"/>
+    </Properties>
+
+    <Appenders>
+
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="%d{yyyy/MM/dd HH:mm:ss.SSS} %t [%p] %c{1} (%F:%L) %msg%n"/>
+        </Console>
+
+        <XMDFile name="rootAppender" fileName="root.log" xmdFilePath="${outPutDir}" addAppkeyToFilePath="false">
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+        </XMDFile>
+
+    </Appenders>
+
+
+    <Loggers>
+
+        <Root level="debug">
+            <appender-ref ref="Console"/>
+            <AppenderRef ref="rootAppender"/>
+            <AppenderRef ref="CatAppender"/>
+        </Root>
+
+    </Loggers>
+
+</Configuration>
+
